@@ -1,0 +1,1632 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="POSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BackOfficeTree">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EnglishName" Type="nvarchar" MaxLength="100" />
+          <Property Name="ArabicName" Type="nvarchar" MaxLength="100" />
+          <Property Name="FormName" Type="nvarchar" MaxLength="100" />
+          <Property Name="Perantid" Type="int" />
+          <Property Name="imgIndex" Type="int" />
+          <Property Name="Sortid" Type="int" />
+        </EntityType>
+        <EntityType Name="Branches">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserCreate" Type="bigint" />
+          <Property Name="UserLastModified" Type="bigint" />
+          <Property Name="CreationDate" Type="datetime" />
+          <Property Name="LastModified" Type="datetime" />
+          <Property Name="BranchCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="BranchName" Type="nvarchar" MaxLength="100" />
+          <Property Name="Logo" Type="image" />
+          <Property Name="Address" Type="nvarchar" MaxLength="400" />
+          <Property Name="Tel1" Type="nvarchar" MaxLength="50" />
+          <Property Name="Tel2" Type="nvarchar" MaxLength="50" />
+          <Property Name="Mobile1" Type="nvarchar" MaxLength="50" />
+          <Property Name="Mobile2" Type="nvarchar" MaxLength="50" />
+          <Property Name="Fax" Type="nvarchar" MaxLength="50" />
+          <Property Name="CommercialNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="SiteURL" Type="nvarchar" MaxLength="50" />
+          <Property Name="Rem" Type="nvarchar" MaxLength="2000" />
+        </EntityType>
+        <EntityType Name="Employees">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Branch_ID" Type="bigint" />
+          <Property Name="UserCreate" Type="bigint" />
+          <Property Name="UserLastModified" Type="bigint" />
+          <Property Name="CreationDate" Type="datetime" />
+          <Property Name="LastModified" Type="datetime" />
+          <Property Name="EmployeeCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="EmployeeName" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="GroupPermissions">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Branch_ID" Type="bigint" />
+          <Property Name="UserCreate" Type="bigint" />
+          <Property Name="UserLastModified" Type="bigint" />
+          <Property Name="CreationDate" Type="datetime" />
+          <Property Name="LastModified" Type="datetime" />
+          <Property Name="GroupCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="GroupName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="LKUPCounties">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CountyName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="LKUPMainTree">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FormID" Type="nvarchar" MaxLength="150" />
+          <Property Name="CaptionEn" Type="nvarchar" MaxLength="150" />
+          <Property Name="CaptionAr" Type="nvarchar" MaxLength="150" />
+          <Property Name="Perant_FormID" Type="nvarchar" MaxLength="150" />
+          <Property Name="FormName" Type="nvarchar" MaxLength="150" />
+          <Property Name="Function" Type="nvarchar" MaxLength="150" />
+          <Property Name="Icon" Type="int" />
+          <Property Name="indexSort" Type="float" />
+          <Property Name="IsUserControl" Type="bit" />
+        </EntityType>
+        <EntityType Name="LKUPPhoneTypes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="POS_Area">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Branch_ID" Type="bigint" />
+          <Property Name="UserCreate" Type="bigint" />
+          <Property Name="UserLastModified" Type="bigint" />
+          <Property Name="CreationDate" Type="datetime" />
+          <Property Name="LastModified" Type="datetime" />
+          <Property Name="AreaCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="AreaName" Type="nvarchar" MaxLength="100" />
+          <Property Name="Note" Type="nvarchar" MaxLength="2000" />
+        </EntityType>
+        <EntityType Name="POS_Attributes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Branch_ID" Type="bigint" />
+          <Property Name="UserCreate" Type="bigint" />
+          <Property Name="UserLastModified" Type="bigint" />
+          <Property Name="CreationDate" Type="datetime" />
+          <Property Name="LastModified" Type="datetime" />
+          <Property Name="AttributCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="AttributName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Note" Type="nvarchar" MaxLength="2000" />
+        </EntityType>
+        <EntityType Name="POS_Customers">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Branch_ID" Type="bigint" />
+          <Property Name="UserCreate" Type="bigint" />
+          <Property Name="UserLastModified" Type="bigint" />
+          <Property Name="CreationDate" Type="datetime" />
+          <Property Name="LastModified" Type="datetime" />
+          <Property Name="CustomerCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="CustomerName" Type="nvarchar" MaxLength="100" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Note" Type="nvarchar" MaxLength="2000" />
+        </EntityType>
+        <EntityType Name="POS_CustomersAddress">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Branch_ID" Type="bigint" />
+          <Property Name="UserCreate" Type="bigint" />
+          <Property Name="UserLastModified" Type="bigint" />
+          <Property Name="CreationDate" Type="datetime" />
+          <Property Name="LastModified" Type="datetime" />
+          <Property Name="Customer_ID" Type="bigint" />
+          <Property Name="Area_ID" Type="bigint" />
+          <Property Name="Street" Type="nvarchar" MaxLength="100" />
+          <Property Name="BlockNumber" Type="int" />
+          <Property Name="SpecialMarque" Type="nvarchar" MaxLength="100" />
+          <Property Name="AddressDetailed" Type="nvarchar" MaxLength="250" />
+          <Property Name="POS_CustomerServicePriceID" Type="bigint" />
+        </EntityType>
+        <EntityType Name="POS_CustomerServicePrice">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Branch_ID" Type="bigint" />
+          <Property Name="UserCreate" Type="bigint" />
+          <Property Name="UserLastModified" Type="bigint" />
+          <Property Name="CreationDate" Type="datetime" />
+          <Property Name="LastModified" Type="datetime" />
+          <Property Name="CustomerServiceCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="CustomerServiceName" Type="nvarchar" MaxLength="100" />
+          <Property Name="ServicePrice" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="POS_CustomersTel">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Branch_ID" Type="bigint" />
+          <Property Name="UserCreate" Type="bigint" />
+          <Property Name="UserLastModified" Type="bigint" />
+          <Property Name="CreationDate" Type="datetime" />
+          <Property Name="LastModified" Type="datetime" />
+          <Property Name="Customer_ID" Type="bigint" />
+          <Property Name="Tel" Type="varchar" MaxLength="50" />
+          <Property Name="LUKUPTelphone_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="POS_Expenses">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Branch_ID" Type="bigint" />
+          <Property Name="UserCreate" Type="bigint" />
+          <Property Name="UserLastModified" Type="bigint" />
+          <Property Name="CreationDate" Type="datetime" />
+          <Property Name="LastModified" Type="datetime" />
+          <Property Name="OrderNo" Type="bigint" />
+          <Property Name="ShiftsTransaction_ID" Type="bigint" />
+          <Property Name="ExpensesType_ID" Type="bigint" />
+          <Property Name="Amount" Type="float" />
+          <Property Name="Note" Type="nvarchar" MaxLength="2000" />
+          <Property Name="User_ID" Type="bigint" />
+        </EntityType>
+        <EntityType Name="POS_ExpensesTypes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Branch_ID" Type="bigint" />
+          <Property Name="UserCreate" Type="bigint" />
+          <Property Name="UserLastModified" Type="bigint" />
+          <Property Name="CreationDate" Type="datetime" />
+          <Property Name="LastModified" Type="datetime" />
+          <Property Name="ExpensCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="ExpensName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Image" Type="image" />
+          <Property Name="Note" Type="nvarchar" MaxLength="2000" />
+        </EntityType>
+        <EntityType Name="POS_Floors">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Branch_ID" Type="bigint" />
+          <Property Name="UserCreate" Type="bigint" />
+          <Property Name="UserLastModified" Type="bigint" />
+          <Property Name="CreationDate" Type="datetime" />
+          <Property Name="LastModified" Type="datetime" />
+          <Property Name="FloorCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="FloorName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Image" Type="image" />
+          <Property Name="Note" Type="nvarchar" MaxLength="2000" />
+        </EntityType>
+        <EntityType Name="POS_Items">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Branch_ID" Type="bigint" />
+          <Property Name="UserCreate" Type="bigint" />
+          <Property Name="UserLastModified" Type="bigint" />
+          <Property Name="CreationDate" Type="datetime" />
+          <Property Name="LastModified" Type="datetime" />
+          <Property Name="ItemCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="ItemName" Type="nvarchar" MaxLength="100" />
+          <Property Name="Image" Type="image" />
+          <Property Name="Category_ID" Type="bigint" />
+          <Property Name="Kitchen_ID" Type="bigint" />
+          <Property Name="Price" Type="float" />
+          <Property Name="ItemService" Type="bit" />
+          <Property Name="KitchenPrint" Type="bit" />
+          <Property Name="ContainSizes" Type="bit" />
+          <Property Name="Note" Type="nvarchar" MaxLength="2000" />
+        </EntityType>
+        <EntityType Name="POS_ItemsCategories">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Branch_ID" Type="bigint" />
+          <Property Name="UserCreate" Type="bigint" />
+          <Property Name="UserLastModified" Type="bigint" />
+          <Property Name="CreationDate" Type="datetime" />
+          <Property Name="LastModified" Type="datetime" />
+          <Property Name="CategoryCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="CategoryName" Type="nvarchar" MaxLength="100" />
+          <Property Name="Note" Type="nvarchar" MaxLength="2000" />
+        </EntityType>
+        <EntityType Name="POS_ItemsSizes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Branch_ID" Type="bigint" />
+          <Property Name="UserCreate" Type="bigint" />
+          <Property Name="UserLastModified" Type="bigint" />
+          <Property Name="CreationDate" Type="datetime" />
+          <Property Name="LastModified" Type="datetime" />
+          <Property Name="Item_ID" Type="bigint" />
+          <Property Name="Size_ID" Type="bigint" />
+          <Property Name="Price" Type="float" Nullable="false" />
+          <Property Name="Note" Type="nvarchar" MaxLength="2000" />
+        </EntityType>
+        <EntityType Name="POS_Kitchens">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Branch_ID" Type="bigint" />
+          <Property Name="UserCreate" Type="bigint" />
+          <Property Name="UserLastModified" Type="bigint" />
+          <Property Name="CreationDate" Type="datetime" />
+          <Property Name="LastModified" Type="datetime" />
+          <Property Name="KitchenCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="KitchenName" Type="nvarchar" MaxLength="100" />
+          <Property Name="PrinterName" Type="nvarchar" MaxLength="100" />
+          <Property Name="KitchenHavePrinter" Type="bit" />
+          <Property Name="KitchenHaveScreen" Type="bit" />
+          <Property Name="Note" Type="nvarchar" MaxLength="2000" />
+        </EntityType>
+        <EntityType Name="POS_LKUPOrderType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="OrderTypeName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="POS_Orders">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Branch_ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Branch_ID" Type="bigint" Nullable="false" />
+          <Property Name="UserCreate" Type="bigint" />
+          <Property Name="UserLastModified" Type="bigint" />
+          <Property Name="CreationDate" Type="datetime" />
+          <Property Name="LastModified" Type="datetime" />
+          <Property Name="ShiftsTransaction_ID" Type="bigint" />
+          <Property Name="OrderNo" Type="bigint" />
+          <Property Name="LookupOrderType_ID" Type="int" />
+          <Property Name="OrderStatus" Type="int" />
+          <Property Name="Timedo" Type="datetime" />
+          <Property Name="Customer_ID" Type="bigint" />
+          <Property Name="CustomerTel" Type="nvarchar" MaxLength="50" />
+          <Property Name="CustomerAddress" Type="nvarchar" MaxLength="700" />
+          <Property Name="Note" Type="nvarchar" MaxLength="2000" />
+          <Property Name="Total" Type="float" />
+          <Property Name="Tax" Type="float" />
+          <Property Name="Discount" Type="float" />
+          <Property Name="Service" Type="float" />
+          <Property Name="DeliveryFees" Type="float" />
+          <Property Name="TotalNet" Type="float" />
+        </EntityType>
+        <EntityType Name="POS_Orders2">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Branch_ID" Type="bigint" Nullable="false" />
+          <Property Name="Master_ID" Type="bigint" Nullable="false" />
+          <Property Name="UserCreate" Type="bigint" />
+          <Property Name="UserLastModified" Type="bigint" />
+          <Property Name="CreationDate" Type="datetime" />
+          <Property Name="LastModified" Type="datetime" />
+          <Property Name="Item_ID" Type="bigint" />
+          <Property Name="Size_ID" Type="bigint" />
+          <Property Name="Perant_ID" Type="bigint" />
+          <Property Name="Price" Type="float" />
+          <Property Name="Qty" Type="float" />
+          <Property Name="value" Type="float" />
+          <Property Name="Discount" Type="float" />
+          <Property Name="isDelete" Type="bit" />
+          <Property Name="isPrint" Type="bit" />
+          <Property Name="Note" Type="nvarchar" MaxLength="500" />
+          <Property Name="Deleterow" Type="bit" />
+          <Property Name="UserDelete" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="POS_ShiftsTransaction">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Branch_ID" Type="bigint" />
+          <Property Name="UserCreate" Type="bigint" />
+          <Property Name="UserLastModified" Type="bigint" />
+          <Property Name="CreationDate" Type="datetime" />
+          <Property Name="LastModified" Type="datetime" />
+          <Property Name="OrderNo" Type="bigint" />
+          <Property Name="OrderStatus" Type="int" />
+          <Property Name="Note" Type="nvarchar" MaxLength="2000" />
+          <Property Name="ShifTypes_ID" Type="bigint" />
+        </EntityType>
+        <EntityType Name="POS_ShiftsTransaction2">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Master_ID" Type="bigint" Nullable="false" />
+          <Property Name="Branch_ID" Type="bigint" />
+          <Property Name="UserCreate" Type="bigint" />
+          <Property Name="UserLastModified" Type="bigint" />
+          <Property Name="CreationDate" Type="datetime" />
+          <Property Name="LastModified" Type="datetime" />
+          <Property Name="OrderNo" Type="bigint" />
+          <Property Name="Note" Type="nvarchar" MaxLength="2000" />
+          <Property Name="User_ID" Type="bigint" />
+          <Property Name="Casher_StartBalance" Type="float" />
+          <Property Name="Casher_EndBalance" Type="float" />
+          <Property Name="Casher_Status" Type="int" />
+        </EntityType>
+        <EntityType Name="POS_ShifTypes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Branch_ID" Type="bigint" />
+          <Property Name="UserCreate" Type="bigint" />
+          <Property Name="UserLastModified" Type="bigint" />
+          <Property Name="CreationDate" Type="datetime" />
+          <Property Name="LastModified" Type="datetime" />
+          <Property Name="ShifTypeCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="ShifTypeName" Type="nvarchar" MaxLength="100" />
+          <Property Name="FromTime" Type="datetime" />
+          <Property Name="ToTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="POS_Sizes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Branch_ID" Type="bigint" />
+          <Property Name="UserCreate" Type="bigint" />
+          <Property Name="UserLastModified" Type="bigint" />
+          <Property Name="CreationDate" Type="datetime" />
+          <Property Name="LastModified" Type="datetime" />
+          <Property Name="SizeCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="SizeName" Type="nvarchar" MaxLength="100" />
+          <Property Name="Note" Type="nvarchar" MaxLength="2000" />
+        </EntityType>
+        <EntityType Name="POS_Tables">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Branch_ID" Type="bigint" />
+          <Property Name="UserCreate" Type="bigint" />
+          <Property Name="UserLastModified" Type="bigint" />
+          <Property Name="CreationDate" Type="datetime" />
+          <Property Name="LastModified" Type="datetime" />
+          <Property Name="TableCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="TableName" Type="nvarchar" MaxLength="100" />
+          <Property Name="Floor_ID" Type="bigint" />
+          <Property Name="Note" Type="nvarchar" MaxLength="2000" />
+        </EntityType>
+        <EntityType Name="ScreensPermissions">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Branch_ID" Type="bigint" />
+          <Property Name="Key" Type="nvarchar" MaxLength="50" />
+          <Property Name="Caption" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Branch_ID" Type="bigint" />
+          <Property Name="UserCreate" Type="bigint" />
+          <Property Name="UserLastModified" Type="bigint" />
+          <Property Name="CreationDate" Type="datetime" />
+          <Property Name="LastModified" Type="datetime" />
+          <Property Name="UserCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="100" />
+          <Property Name="UserPassword" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="UsersPermissions">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Branch_ID" Type="bigint" />
+          <Property Name="UserID" Type="bigint" />
+          <Property Name="ScreenID" Type="bigint" />
+        </EntityType>
+        <Function Name="AssignOrdersToCurrentShift" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Shift_ID" Type="bigint" Mode="In" />
+          <Parameter Name="p_Branch_ID" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="POS_CustomerDeltails_save" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CustomerID" Type="bigint" Mode="In" />
+          <Parameter Name="Branch_ID" Type="nvarchar" Mode="In" />
+          <Parameter Name="XML" Type="xml" Mode="In" />
+        </Function>
+        <Function Name="POS_getAllItems" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="POS_OrdersDeltails_save" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="XML" Type="xml" Mode="In" />
+          <Parameter Name="Master_ID" Type="bigint" Mode="In" />
+          <Parameter Name="Branch_ID" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="POS_Pon" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="bigint" Mode="In" />
+        </Function>
+        <EntityContainer Name="POSModelStoreContainer">
+          <EntitySet Name="BackOfficeTree" EntityType="Self.BackOfficeTree" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Branches" EntityType="Self.Branches" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employees" EntityType="Self.Employees" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GroupPermissions" EntityType="Self.GroupPermissions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LKUPCounties" EntityType="Self.LKUPCounties" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LKUPMainTree" EntityType="Self.LKUPMainTree" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LKUPPhoneTypes" EntityType="Self.LKUPPhoneTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="POS_Area" EntityType="Self.POS_Area" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="POS_Attributes" EntityType="Self.POS_Attributes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="POS_Customers" EntityType="Self.POS_Customers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="POS_CustomersAddress" EntityType="Self.POS_CustomersAddress" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="POS_CustomerServicePrice" EntityType="Self.POS_CustomerServicePrice" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="POS_CustomersTel" EntityType="Self.POS_CustomersTel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="POS_Expenses" EntityType="Self.POS_Expenses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="POS_ExpensesTypes" EntityType="Self.POS_ExpensesTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="POS_Floors" EntityType="Self.POS_Floors" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="POS_Items" EntityType="Self.POS_Items" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="POS_ItemsCategories" EntityType="Self.POS_ItemsCategories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="POS_ItemsSizes" EntityType="Self.POS_ItemsSizes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="POS_Kitchens" EntityType="Self.POS_Kitchens" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="POS_LKUPOrderType" EntityType="Self.POS_LKUPOrderType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="POS_Orders" EntityType="Self.POS_Orders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="POS_Orders2" EntityType="Self.POS_Orders2" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="POS_ShiftsTransaction" EntityType="Self.POS_ShiftsTransaction" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="POS_ShiftsTransaction2" EntityType="Self.POS_ShiftsTransaction2" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="POS_ShifTypes" EntityType="Self.POS_ShifTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="POS_Sizes" EntityType="Self.POS_Sizes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="POS_Tables" EntityType="Self.POS_Tables" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ScreensPermissions" EntityType="Self.ScreensPermissions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UsersPermissions" EntityType="Self.UsersPermissions" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="POSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="DBEntities" annotation:LazyLoadingEnabled="true" >
+          <EntitySet Name="BackOfficeTrees" EntityType="POSModel.BackOfficeTree" />
+          <EntitySet Name="Branches" EntityType="POSModel.Branch" />
+          <EntitySet Name="Employees" EntityType="POSModel.Employee" />
+          <EntitySet Name="GroupPermissions" EntityType="POSModel.GroupPermission" />
+          <EntitySet Name="LKUPPhoneTypes" EntityType="POSModel.LKUPPhoneType" />
+          <EntitySet Name="POS_Area" EntityType="POSModel.POS_Area" />
+          <EntitySet Name="POS_Attributes" EntityType="POSModel.POS_Attributes" />
+          <EntitySet Name="POS_Customers" EntityType="POSModel.POS_Customers" />
+          <EntitySet Name="POS_CustomersAddress" EntityType="POSModel.POS_CustomersAddress" />
+          <EntitySet Name="POS_CustomerServicePrice" EntityType="POSModel.POS_CustomerServicePrice" />
+          <EntitySet Name="POS_CustomersTel" EntityType="POSModel.POS_CustomersTel" />
+          <EntitySet Name="POS_Expenses" EntityType="POSModel.POS_Expenses" />
+          <EntitySet Name="POS_ExpensesTypes" EntityType="POSModel.POS_ExpensesTypes" />
+          <EntitySet Name="POS_Floors" EntityType="POSModel.POS_Floors" />
+          <EntitySet Name="POS_Items" EntityType="POSModel.POS_Items" />
+          <EntitySet Name="POS_ItemsCategories" EntityType="POSModel.POS_ItemsCategories" />
+          <EntitySet Name="POS_Kitchens" EntityType="POSModel.POS_Kitchens" />
+          <EntitySet Name="POS_LKUPOrderType" EntityType="POSModel.POS_LKUPOrderType" />
+          <EntitySet Name="POS_Orders2" EntityType="POSModel.POS_Orders2" />
+          <EntitySet Name="POS_ShiftsTransaction" EntityType="POSModel.POS_ShiftsTransaction" />
+          <EntitySet Name="POS_ShiftsTransaction2" EntityType="POSModel.POS_ShiftsTransaction2" />
+          <EntitySet Name="POS_ShifTypes" EntityType="POSModel.POS_ShifTypes" />
+          <EntitySet Name="POS_Sizes" EntityType="POSModel.POS_Sizes" />
+          <EntitySet Name="POS_Tables" EntityType="POSModel.POS_Tables" />
+          <EntitySet Name="ScreensPermissions" EntityType="POSModel.ScreensPermission" />
+          <EntitySet Name="Users" EntityType="POSModel.User" />
+          <EntitySet Name="UsersPermissions" EntityType="POSModel.UsersPermission" />
+          <FunctionImport Name="AssignOrdersToCurrentShift">
+            <Parameter Name="Shift_ID" Mode="In" Type="Int64" />
+            <Parameter Name="p_Branch_ID" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="POS_CustomerDeltails_save">
+            <Parameter Name="CustomerID" Mode="In" Type="Int64" />
+            <Parameter Name="Branch_ID" Mode="In" Type="String" />
+            <Parameter Name="XML" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="POS_getAllItems" ReturnType="Collection(POSModel.POS_getAllItems_Result)" />
+          <FunctionImport Name="POS_OrdersDeltails_save">
+            <Parameter Name="XML" Mode="In" Type="String" />
+            <Parameter Name="Master_ID" Mode="In" Type="Int64" />
+            <Parameter Name="Branch_ID" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="POS_Pon" ReturnType="Collection(POSModel.POS_Pon_Result)">
+          <Parameter Name="ID" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <EntitySet Name="POS_ItemsSizes" EntityType="POSModel.POS_ItemsSizes" />
+          <EntitySet Name="LKUPCounties" EntityType="POSModel.LKUPCounty" />
+          <EntitySet Name="LKUPMainTrees" EntityType="POSModel.LKUPMainTree" />
+          <EntitySet Name="POS_Orders" EntityType="POSModel.POS_Orders" />
+        </EntityContainer>
+        <EntityType Name="BackOfficeTree">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EnglishName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ArabicName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="FormName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Perantid" Type="Int32" />
+          <Property Name="imgIndex" Type="Int32" />
+          <Property Name="Sortid" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Branch">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserCreate" Type="Int64" />
+          <Property Name="UserLastModified" Type="Int64" />
+          <Property Name="CreationDate" Type="DateTime" Precision="3" />
+          <Property Name="LastModified" Type="DateTime" Precision="3" />
+          <Property Name="BranchCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BranchName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Logo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Address" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="Tel1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Tel2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Mobile1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Mobile2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Fax" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CommercialNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SiteURL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Rem" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Branch_ID" Type="Int64" />
+          <Property Name="UserCreate" Type="Int64" />
+          <Property Name="UserLastModified" Type="Int64" />
+          <Property Name="CreationDate" Type="DateTime" Precision="3" />
+          <Property Name="LastModified" Type="DateTime" Precision="3" />
+          <Property Name="EmployeeCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EmployeeName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="GroupPermission">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Branch_ID" Type="Int64" />
+          <Property Name="UserCreate" Type="Int64" />
+          <Property Name="UserLastModified" Type="Int64" />
+          <Property Name="CreationDate" Type="DateTime" Precision="3" />
+          <Property Name="LastModified" Type="DateTime" Precision="3" />
+          <Property Name="GroupCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GroupName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="LKUPPhoneType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="POS_Area">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Branch_ID" Type="Int64" />
+          <Property Name="UserCreate" Type="Int64" />
+          <Property Name="UserLastModified" Type="Int64" />
+          <Property Name="CreationDate" Type="DateTime" Precision="3" />
+          <Property Name="LastModified" Type="DateTime" Precision="3" />
+          <Property Name="AreaCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AreaName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Note" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="POS_Attributes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Branch_ID" Type="Int64" />
+          <Property Name="UserCreate" Type="Int64" />
+          <Property Name="UserLastModified" Type="Int64" />
+          <Property Name="CreationDate" Type="DateTime" Precision="3" />
+          <Property Name="LastModified" Type="DateTime" Precision="3" />
+          <Property Name="AttributCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AttributName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Note" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="POS_Customers">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Branch_ID" Type="Int64" />
+          <Property Name="UserCreate" Type="Int64" />
+          <Property Name="UserLastModified" Type="Int64" />
+          <Property Name="CreationDate" Type="DateTime" Precision="3" />
+          <Property Name="LastModified" Type="DateTime" Precision="3" />
+          <Property Name="CustomerCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Note" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="POS_CustomersAddress">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Branch_ID" Type="Int64" />
+          <Property Name="UserCreate" Type="Int64" />
+          <Property Name="UserLastModified" Type="Int64" />
+          <Property Name="CreationDate" Type="DateTime" Precision="3" />
+          <Property Name="LastModified" Type="DateTime" Precision="3" />
+          <Property Name="Customer_ID" Type="Int64" />
+          <Property Name="Area_ID" Type="Int64" />
+          <Property Name="Street" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="BlockNumber" Type="Int32" />
+          <Property Name="SpecialMarque" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="AddressDetailed" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="POS_CustomerServicePriceID" Type="Int64" />
+        </EntityType>
+        <EntityType Name="POS_CustomerServicePrice">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Branch_ID" Type="Int64" />
+          <Property Name="UserCreate" Type="Int64" />
+          <Property Name="UserLastModified" Type="Int64" />
+          <Property Name="CreationDate" Type="DateTime" Precision="3" />
+          <Property Name="LastModified" Type="DateTime" Precision="3" />
+          <Property Name="CustomerServiceCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerServiceName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ServicePrice" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="POS_CustomersTel">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Branch_ID" Type="Int64" />
+          <Property Name="UserCreate" Type="Int64" />
+          <Property Name="UserLastModified" Type="Int64" />
+          <Property Name="CreationDate" Type="DateTime" Precision="3" />
+          <Property Name="LastModified" Type="DateTime" Precision="3" />
+          <Property Name="Customer_ID" Type="Int64" />
+          <Property Name="Tel" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LUKUPTelphone_ID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="POS_Expenses">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Branch_ID" Type="Int64" />
+          <Property Name="UserCreate" Type="Int64" />
+          <Property Name="UserLastModified" Type="Int64" />
+          <Property Name="CreationDate" Type="DateTime" Precision="3" />
+          <Property Name="LastModified" Type="DateTime" Precision="3" />
+          <Property Name="OrderNo" Type="Int64" />
+          <Property Name="ShiftsTransaction_ID" Type="Int64" />
+          <Property Name="ExpensesType_ID" Type="Int64" />
+          <Property Name="Amount" Type="Double" />
+          <Property Name="Note" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="User_ID" Type="Int64" />
+        </EntityType>
+        <EntityType Name="POS_ExpensesTypes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Branch_ID" Type="Int64" />
+          <Property Name="UserCreate" Type="Int64" />
+          <Property Name="UserLastModified" Type="Int64" />
+          <Property Name="CreationDate" Type="DateTime" Precision="3" />
+          <Property Name="LastModified" Type="DateTime" Precision="3" />
+          <Property Name="ExpensCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ExpensName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Note" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="POS_Floors">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Branch_ID" Type="Int64" />
+          <Property Name="UserCreate" Type="Int64" />
+          <Property Name="UserLastModified" Type="Int64" />
+          <Property Name="CreationDate" Type="DateTime" Precision="3" />
+          <Property Name="LastModified" Type="DateTime" Precision="3" />
+          <Property Name="FloorCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FloorName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Note" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="POS_Items">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Branch_ID" Type="Int64" />
+          <Property Name="UserCreate" Type="Int64" />
+          <Property Name="UserLastModified" Type="Int64" />
+          <Property Name="CreationDate" Type="DateTime" Precision="3" />
+          <Property Name="LastModified" Type="DateTime" Precision="3" />
+          <Property Name="ItemCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ItemName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Category_ID" Type="Int64" />
+          <Property Name="Kitchen_ID" Type="Int64" />
+          <Property Name="Price" Type="Double" />
+          <Property Name="ItemService" Type="Boolean" />
+          <Property Name="KitchenPrint" Type="Boolean" />
+          <Property Name="ContainSizes" Type="Boolean" />
+          <Property Name="Note" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="POS_ItemsCategories">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Branch_ID" Type="Int64" />
+          <Property Name="UserCreate" Type="Int64" />
+          <Property Name="UserLastModified" Type="Int64" />
+          <Property Name="CreationDate" Type="DateTime" Precision="3" />
+          <Property Name="LastModified" Type="DateTime" Precision="3" />
+          <Property Name="CategoryCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CategoryName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Note" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="POS_Kitchens">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Branch_ID" Type="Int64" />
+          <Property Name="UserCreate" Type="Int64" />
+          <Property Name="UserLastModified" Type="Int64" />
+          <Property Name="CreationDate" Type="DateTime" Precision="3" />
+          <Property Name="LastModified" Type="DateTime" Precision="3" />
+          <Property Name="KitchenCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="KitchenName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PrinterName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="KitchenHavePrinter" Type="Boolean" />
+          <Property Name="KitchenHaveScreen" Type="Boolean" />
+          <Property Name="Note" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="POS_LKUPOrderType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="OrderTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="POS_Orders2">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Branch_ID" Type="Int64" Nullable="false" />
+          <Property Name="Master_ID" Type="Int64" Nullable="false" />
+          <Property Name="UserCreate" Type="Int64" />
+          <Property Name="UserLastModified" Type="Int64" />
+          <Property Name="CreationDate" Type="DateTime" Precision="3" />
+          <Property Name="LastModified" Type="DateTime" Precision="3" />
+          <Property Name="Item_ID" Type="Int64" />
+          <Property Name="Size_ID" Type="Int64" />
+          <Property Name="Perant_ID" Type="Int64" />
+          <Property Name="Price" Type="Double" />
+          <Property Name="Qty" Type="Double" />
+          <Property Name="value" Type="Double" />
+          <Property Name="Discount" Type="Double" />
+          <Property Name="isDelete" Type="Boolean" />
+          <Property Name="isPrint" Type="Boolean" />
+          <Property Name="Note" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Deleterow" Type="Boolean" />
+          <Property Name="UserDelete" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="POS_ShiftsTransaction">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Branch_ID" Type="Int64" />
+          <Property Name="UserCreate" Type="Int64" />
+          <Property Name="UserLastModified" Type="Int64" />
+          <Property Name="CreationDate" Type="DateTime" Precision="3" />
+          <Property Name="LastModified" Type="DateTime" Precision="3" />
+          <Property Name="OrderNo" Type="Int64" />
+          <Property Name="OrderStatus" Type="Int32" />
+          <Property Name="Note" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="ShifTypes_ID" Type="Int64" />
+        </EntityType>
+        <EntityType Name="POS_ShiftsTransaction2">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Master_ID" Type="Int64" Nullable="false" />
+          <Property Name="Branch_ID" Type="Int64" />
+          <Property Name="UserCreate" Type="Int64" />
+          <Property Name="UserLastModified" Type="Int64" />
+          <Property Name="CreationDate" Type="DateTime" Precision="3" />
+          <Property Name="LastModified" Type="DateTime" Precision="3" />
+          <Property Name="OrderNo" Type="Int64" />
+          <Property Name="Note" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="User_ID" Type="Int64" />
+          <Property Name="Casher_StartBalance" Type="Double" />
+          <Property Name="Casher_EndBalance" Type="Double" />
+          <Property Name="Casher_Status" Type="Int32" />
+        </EntityType>
+        <EntityType Name="POS_ShifTypes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Branch_ID" Type="Int64" />
+          <Property Name="UserCreate" Type="Int64" />
+          <Property Name="UserLastModified" Type="Int64" />
+          <Property Name="CreationDate" Type="DateTime" Precision="3" />
+          <Property Name="LastModified" Type="DateTime" Precision="3" />
+          <Property Name="ShifTypeCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ShifTypeName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="FromTime" Type="DateTime" Precision="3" />
+          <Property Name="ToTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="POS_Sizes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Branch_ID" Type="Int64" />
+          <Property Name="UserCreate" Type="Int64" />
+          <Property Name="UserLastModified" Type="Int64" />
+          <Property Name="CreationDate" Type="DateTime" Precision="3" />
+          <Property Name="LastModified" Type="DateTime" Precision="3" />
+          <Property Name="SizeCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SizeName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Note" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="POS_Tables">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Branch_ID" Type="Int64" />
+          <Property Name="UserCreate" Type="Int64" />
+          <Property Name="UserLastModified" Type="Int64" />
+          <Property Name="CreationDate" Type="DateTime" Precision="3" />
+          <Property Name="LastModified" Type="DateTime" Precision="3" />
+          <Property Name="TableCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TableName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Note" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="Floor_ID" Type="Int64" />
+        </EntityType>
+        <EntityType Name="ScreensPermission">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Branch_ID" Type="Int64" />
+          <Property Name="Key" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Caption" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Branch_ID" Type="Int64" />
+          <Property Name="UserCreate" Type="Int64" />
+          <Property Name="UserLastModified" Type="Int64" />
+          <Property Name="CreationDate" Type="DateTime" Precision="3" />
+          <Property Name="LastModified" Type="DateTime" Precision="3" />
+          <Property Name="UserCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="UserPassword" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="UsersPermission">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Branch_ID" Type="Int64" />
+          <Property Name="UserID" Type="Int64" />
+          <Property Name="ScreenID" Type="Int64" />
+        </EntityType>
+        <ComplexType Name="POS_getAllItems_Result">
+          <Property Type="Int64" Name="ID" Nullable="true" />
+          <Property Type="String" Name="CategoryName" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="main" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="POS_Pon_Result">
+          <Property Type="Int64" Name="id" Nullable="false" />
+          <Property Type="Int64" Name="Master_ID" Nullable="false" />
+          <Property Type="Int64" Name="UserCreate" Nullable="true" />
+          <Property Type="Int64" Name="UserLastModified" Nullable="true" />
+          <Property Type="DateTime" Name="CreationDate" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="LastModified" Nullable="true" Precision="23" />
+          <Property Type="Int64" Name="Item_ID" Nullable="true" />
+          <Property Type="Int64" Name="Size_ID" Nullable="true" />
+          <Property Type="Int64" Name="Perant_ID" Nullable="true" />
+          <Property Type="Double" Name="Price" Nullable="true" />
+          <Property Type="Double" Name="Qty" Nullable="true" />
+          <Property Type="Double" Name="value" Nullable="true" />
+          <Property Type="Double" Name="Discount" Nullable="true" />
+          <Property Type="Boolean" Name="isDelete" Nullable="true" />
+          <Property Type="Boolean" Name="isPrint" Nullable="true" />
+          <Property Type="String" Name="Note" Nullable="true" MaxLength="500" />
+          <Property Type="Boolean" Name="Deleterow" Nullable="true" />
+          <Property Type="String" Name="UserDelete" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="ItemCode" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ItemName" Nullable="true" MaxLength="100" />
+          <Property Type="Binary" Name="Image" Nullable="true" MaxLength="Max" />
+          <Property Type="Int64" Name="Category_ID" Nullable="true" />
+          <Property Type="Int64" Name="Kitchen_ID" Nullable="true" />
+          <Property Type="Boolean" Name="ItemService" Nullable="true" />
+          <Property Type="Boolean" Name="ContainSizes" Nullable="true" />
+          <Property Type="String" Name="SizeCode" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="SizeName" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <EntityType Name="POS_ItemsSizes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Branch_ID" Type="Int64" />
+          <Property Name="UserCreate" Type="Int64" />
+          <Property Name="UserLastModified" Type="Int64" />
+          <Property Name="CreationDate" Type="DateTime" Precision="3" />
+          <Property Name="LastModified" Type="DateTime" Precision="3" />
+          <Property Name="Item_ID" Type="Int64" />
+          <Property Name="Size_ID" Type="Int64" />
+          <Property Name="Price" Type="Double" Nullable="false" />
+          <Property Name="Note" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="LKUPCounty">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CountyName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="LKUPMainTree">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FormID" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="CaptionEn" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="CaptionAr" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Perant_FormID" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="FormName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Function" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Icon" Type="Int32" />
+          <Property Name="indexSort" Type="Double" />
+          <Property Name="IsUserControl" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="POS_Orders">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="Branch_ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Branch_ID" Type="Int64" Nullable="false" />
+          <Property Name="UserCreate" Type="Int64" />
+          <Property Name="UserLastModified" Type="Int64" />
+          <Property Name="CreationDate" Type="DateTime" Precision="3" />
+          <Property Name="LastModified" Type="DateTime" Precision="3" />
+          <Property Name="ShiftsTransaction_ID" Type="Int64" />
+          <Property Name="OrderNo" Type="Int64" />
+          <Property Name="LookupOrderType_ID" Type="Int32" />
+          <Property Name="OrderStatus" Type="Int32" />
+          <Property Name="Timedo" Type="DateTime" Precision="3" />
+          <Property Name="Customer_ID" Type="Int64" />
+          <Property Name="CustomerTel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerAddress" Type="String" MaxLength="700" FixedLength="false" Unicode="true" />
+          <Property Name="Note" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="Total" Type="Double" />
+          <Property Name="Tax" Type="Double" />
+          <Property Name="Discount" Type="Double" />
+          <Property Name="Service" Type="Double" />
+          <Property Name="DeliveryFees" Type="Double" />
+          <Property Name="TotalNet" Type="Double" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="POSModelStoreContainer" CdmEntityContainer="DBEntities" >
+          <EntitySetMapping Name="BackOfficeTrees">
+            <EntityTypeMapping TypeName="POSModel.BackOfficeTree">
+              <MappingFragment StoreEntitySet="BackOfficeTree">
+                <ScalarProperty Name="Sortid" ColumnName="Sortid" />
+                <ScalarProperty Name="imgIndex" ColumnName="imgIndex" />
+                <ScalarProperty Name="Perantid" ColumnName="Perantid" />
+                <ScalarProperty Name="FormName" ColumnName="FormName" />
+                <ScalarProperty Name="ArabicName" ColumnName="ArabicName" />
+                <ScalarProperty Name="EnglishName" ColumnName="EnglishName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Branches">
+            <EntityTypeMapping TypeName="POSModel.Branch">
+              <MappingFragment StoreEntitySet="Branches">
+                <ScalarProperty Name="Rem" ColumnName="Rem" />
+                <ScalarProperty Name="SiteURL" ColumnName="SiteURL" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="CommercialNo" ColumnName="CommercialNo" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="Mobile2" ColumnName="Mobile2" />
+                <ScalarProperty Name="Mobile1" ColumnName="Mobile1" />
+                <ScalarProperty Name="Tel2" ColumnName="Tel2" />
+                <ScalarProperty Name="Tel1" ColumnName="Tel1" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Logo" ColumnName="Logo" />
+                <ScalarProperty Name="BranchName" ColumnName="BranchName" />
+                <ScalarProperty Name="BranchCode" ColumnName="BranchCode" />
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="UserLastModified" ColumnName="UserLastModified" />
+                <ScalarProperty Name="UserCreate" ColumnName="UserCreate" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="POSModel.Employee">
+              <MappingFragment StoreEntitySet="Employees">
+                <ScalarProperty Name="EmployeeName" ColumnName="EmployeeName" />
+                <ScalarProperty Name="EmployeeCode" ColumnName="EmployeeCode" />
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="UserLastModified" ColumnName="UserLastModified" />
+                <ScalarProperty Name="UserCreate" ColumnName="UserCreate" />
+                <ScalarProperty Name="Branch_ID" ColumnName="Branch_ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GroupPermissions">
+            <EntityTypeMapping TypeName="POSModel.GroupPermission">
+              <MappingFragment StoreEntitySet="GroupPermissions">
+                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+                <ScalarProperty Name="GroupCode" ColumnName="GroupCode" />
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="UserLastModified" ColumnName="UserLastModified" />
+                <ScalarProperty Name="UserCreate" ColumnName="UserCreate" />
+                <ScalarProperty Name="Branch_ID" ColumnName="Branch_ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LKUPPhoneTypes">
+            <EntityTypeMapping TypeName="POSModel.LKUPPhoneType">
+              <MappingFragment StoreEntitySet="LKUPPhoneTypes">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="POS_Area">
+            <EntityTypeMapping TypeName="POSModel.POS_Area">
+              <MappingFragment StoreEntitySet="POS_Area">
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="AreaName" ColumnName="AreaName" />
+                <ScalarProperty Name="AreaCode" ColumnName="AreaCode" />
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="UserLastModified" ColumnName="UserLastModified" />
+                <ScalarProperty Name="UserCreate" ColumnName="UserCreate" />
+                <ScalarProperty Name="Branch_ID" ColumnName="Branch_ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="POS_Attributes">
+            <EntityTypeMapping TypeName="POSModel.POS_Attributes">
+              <MappingFragment StoreEntitySet="POS_Attributes">
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="AttributName" ColumnName="AttributName" />
+                <ScalarProperty Name="AttributCode" ColumnName="AttributCode" />
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="UserLastModified" ColumnName="UserLastModified" />
+                <ScalarProperty Name="UserCreate" ColumnName="UserCreate" />
+                <ScalarProperty Name="Branch_ID" ColumnName="Branch_ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="POS_Customers">
+            <EntityTypeMapping TypeName="POSModel.POS_Customers">
+              <MappingFragment StoreEntitySet="POS_Customers">
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+                <ScalarProperty Name="CustomerCode" ColumnName="CustomerCode" />
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="UserLastModified" ColumnName="UserLastModified" />
+                <ScalarProperty Name="UserCreate" ColumnName="UserCreate" />
+                <ScalarProperty Name="Branch_ID" ColumnName="Branch_ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="POS_CustomersAddress">
+            <EntityTypeMapping TypeName="POSModel.POS_CustomersAddress">
+              <MappingFragment StoreEntitySet="POS_CustomersAddress">
+                <ScalarProperty Name="POS_CustomerServicePriceID" ColumnName="POS_CustomerServicePriceID" />
+                <ScalarProperty Name="AddressDetailed" ColumnName="AddressDetailed" />
+                <ScalarProperty Name="SpecialMarque" ColumnName="SpecialMarque" />
+                <ScalarProperty Name="BlockNumber" ColumnName="BlockNumber" />
+                <ScalarProperty Name="Street" ColumnName="Street" />
+                <ScalarProperty Name="Area_ID" ColumnName="Area_ID" />
+                <ScalarProperty Name="Customer_ID" ColumnName="Customer_ID" />
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="UserLastModified" ColumnName="UserLastModified" />
+                <ScalarProperty Name="UserCreate" ColumnName="UserCreate" />
+                <ScalarProperty Name="Branch_ID" ColumnName="Branch_ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="POS_CustomerServicePrice">
+            <EntityTypeMapping TypeName="POSModel.POS_CustomerServicePrice">
+              <MappingFragment StoreEntitySet="POS_CustomerServicePrice">
+                <ScalarProperty Name="ServicePrice" ColumnName="ServicePrice" />
+                <ScalarProperty Name="CustomerServiceName" ColumnName="CustomerServiceName" />
+                <ScalarProperty Name="CustomerServiceCode" ColumnName="CustomerServiceCode" />
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="UserLastModified" ColumnName="UserLastModified" />
+                <ScalarProperty Name="UserCreate" ColumnName="UserCreate" />
+                <ScalarProperty Name="Branch_ID" ColumnName="Branch_ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="POS_CustomersTel">
+            <EntityTypeMapping TypeName="POSModel.POS_CustomersTel">
+              <MappingFragment StoreEntitySet="POS_CustomersTel">
+                <ScalarProperty Name="LUKUPTelphone_ID" ColumnName="LUKUPTelphone_ID" />
+                <ScalarProperty Name="Tel" ColumnName="Tel" />
+                <ScalarProperty Name="Customer_ID" ColumnName="Customer_ID" />
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="UserLastModified" ColumnName="UserLastModified" />
+                <ScalarProperty Name="UserCreate" ColumnName="UserCreate" />
+                <ScalarProperty Name="Branch_ID" ColumnName="Branch_ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="POS_Expenses">
+            <EntityTypeMapping TypeName="POSModel.POS_Expenses">
+              <MappingFragment StoreEntitySet="POS_Expenses">
+                <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="ExpensesType_ID" ColumnName="ExpensesType_ID" />
+                <ScalarProperty Name="ShiftsTransaction_ID" ColumnName="ShiftsTransaction_ID" />
+                <ScalarProperty Name="OrderNo" ColumnName="OrderNo" />
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="UserLastModified" ColumnName="UserLastModified" />
+                <ScalarProperty Name="UserCreate" ColumnName="UserCreate" />
+                <ScalarProperty Name="Branch_ID" ColumnName="Branch_ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="POS_ExpensesTypes">
+            <EntityTypeMapping TypeName="POSModel.POS_ExpensesTypes">
+              <MappingFragment StoreEntitySet="POS_ExpensesTypes">
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="ExpensName" ColumnName="ExpensName" />
+                <ScalarProperty Name="ExpensCode" ColumnName="ExpensCode" />
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="UserLastModified" ColumnName="UserLastModified" />
+                <ScalarProperty Name="UserCreate" ColumnName="UserCreate" />
+                <ScalarProperty Name="Branch_ID" ColumnName="Branch_ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="POS_Floors">
+            <EntityTypeMapping TypeName="POSModel.POS_Floors">
+              <MappingFragment StoreEntitySet="POS_Floors">
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="FloorName" ColumnName="FloorName" />
+                <ScalarProperty Name="FloorCode" ColumnName="FloorCode" />
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="UserLastModified" ColumnName="UserLastModified" />
+                <ScalarProperty Name="UserCreate" ColumnName="UserCreate" />
+                <ScalarProperty Name="Branch_ID" ColumnName="Branch_ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="POS_Items">
+            <EntityTypeMapping TypeName="POSModel.POS_Items">
+              <MappingFragment StoreEntitySet="POS_Items">
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="ContainSizes" ColumnName="ContainSizes" />
+                <ScalarProperty Name="KitchenPrint" ColumnName="KitchenPrint" />
+                <ScalarProperty Name="ItemService" ColumnName="ItemService" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Kitchen_ID" ColumnName="Kitchen_ID" />
+                <ScalarProperty Name="Category_ID" ColumnName="Category_ID" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+                <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="UserLastModified" ColumnName="UserLastModified" />
+                <ScalarProperty Name="UserCreate" ColumnName="UserCreate" />
+                <ScalarProperty Name="Branch_ID" ColumnName="Branch_ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="POS_ItemsCategories">
+            <EntityTypeMapping TypeName="POSModel.POS_ItemsCategories">
+              <MappingFragment StoreEntitySet="POS_ItemsCategories">
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="CategoryCode" ColumnName="CategoryCode" />
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="UserLastModified" ColumnName="UserLastModified" />
+                <ScalarProperty Name="UserCreate" ColumnName="UserCreate" />
+                <ScalarProperty Name="Branch_ID" ColumnName="Branch_ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="POS_Kitchens">
+            <EntityTypeMapping TypeName="POSModel.POS_Kitchens">
+              <MappingFragment StoreEntitySet="POS_Kitchens">
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="KitchenHaveScreen" ColumnName="KitchenHaveScreen" />
+                <ScalarProperty Name="KitchenHavePrinter" ColumnName="KitchenHavePrinter" />
+                <ScalarProperty Name="PrinterName" ColumnName="PrinterName" />
+                <ScalarProperty Name="KitchenName" ColumnName="KitchenName" />
+                <ScalarProperty Name="KitchenCode" ColumnName="KitchenCode" />
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="UserLastModified" ColumnName="UserLastModified" />
+                <ScalarProperty Name="UserCreate" ColumnName="UserCreate" />
+                <ScalarProperty Name="Branch_ID" ColumnName="Branch_ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="POS_LKUPOrderType">
+            <EntityTypeMapping TypeName="POSModel.POS_LKUPOrderType">
+              <MappingFragment StoreEntitySet="POS_LKUPOrderType">
+                <ScalarProperty Name="OrderTypeName" ColumnName="OrderTypeName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="POS_Orders2">
+            <EntityTypeMapping TypeName="POSModel.POS_Orders2">
+              <MappingFragment StoreEntitySet="POS_Orders2">
+                <ScalarProperty Name="UserDelete" ColumnName="UserDelete" />
+                <ScalarProperty Name="Deleterow" ColumnName="Deleterow" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="isPrint" ColumnName="isPrint" />
+                <ScalarProperty Name="isDelete" ColumnName="isDelete" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="value" ColumnName="value" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Perant_ID" ColumnName="Perant_ID" />
+                <ScalarProperty Name="Size_ID" ColumnName="Size_ID" />
+                <ScalarProperty Name="Item_ID" ColumnName="Item_ID" />
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="UserLastModified" ColumnName="UserLastModified" />
+                <ScalarProperty Name="UserCreate" ColumnName="UserCreate" />
+                <ScalarProperty Name="Master_ID" ColumnName="Master_ID" />
+                <ScalarProperty Name="Branch_ID" ColumnName="Branch_ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="POS_ShiftsTransaction">
+            <EntityTypeMapping TypeName="POSModel.POS_ShiftsTransaction">
+              <MappingFragment StoreEntitySet="POS_ShiftsTransaction">
+                <ScalarProperty Name="ShifTypes_ID" ColumnName="ShifTypes_ID" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="OrderStatus" ColumnName="OrderStatus" />
+                <ScalarProperty Name="OrderNo" ColumnName="OrderNo" />
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="UserLastModified" ColumnName="UserLastModified" />
+                <ScalarProperty Name="UserCreate" ColumnName="UserCreate" />
+                <ScalarProperty Name="Branch_ID" ColumnName="Branch_ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="POS_ShiftsTransaction2">
+            <EntityTypeMapping TypeName="POSModel.POS_ShiftsTransaction2">
+              <MappingFragment StoreEntitySet="POS_ShiftsTransaction2">
+                <ScalarProperty Name="Casher_Status" ColumnName="Casher_Status" />
+                <ScalarProperty Name="Casher_EndBalance" ColumnName="Casher_EndBalance" />
+                <ScalarProperty Name="Casher_StartBalance" ColumnName="Casher_StartBalance" />
+                <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="OrderNo" ColumnName="OrderNo" />
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="UserLastModified" ColumnName="UserLastModified" />
+                <ScalarProperty Name="UserCreate" ColumnName="UserCreate" />
+                <ScalarProperty Name="Branch_ID" ColumnName="Branch_ID" />
+                <ScalarProperty Name="Master_ID" ColumnName="Master_ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="POS_ShifTypes">
+            <EntityTypeMapping TypeName="POSModel.POS_ShifTypes">
+              <MappingFragment StoreEntitySet="POS_ShifTypes">
+                <ScalarProperty Name="ToTime" ColumnName="ToTime" />
+                <ScalarProperty Name="FromTime" ColumnName="FromTime" />
+                <ScalarProperty Name="ShifTypeName" ColumnName="ShifTypeName" />
+                <ScalarProperty Name="ShifTypeCode" ColumnName="ShifTypeCode" />
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="UserLastModified" ColumnName="UserLastModified" />
+                <ScalarProperty Name="UserCreate" ColumnName="UserCreate" />
+                <ScalarProperty Name="Branch_ID" ColumnName="Branch_ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="POS_Sizes">
+            <EntityTypeMapping TypeName="POSModel.POS_Sizes">
+              <MappingFragment StoreEntitySet="POS_Sizes">
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="SizeName" ColumnName="SizeName" />
+                <ScalarProperty Name="SizeCode" ColumnName="SizeCode" />
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="UserLastModified" ColumnName="UserLastModified" />
+                <ScalarProperty Name="UserCreate" ColumnName="UserCreate" />
+                <ScalarProperty Name="Branch_ID" ColumnName="Branch_ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="POS_Tables">
+            <EntityTypeMapping TypeName="POSModel.POS_Tables">
+              <MappingFragment StoreEntitySet="POS_Tables">
+                <ScalarProperty Name="Floor_ID" ColumnName="Floor_ID" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="TableName" ColumnName="TableName" />
+                <ScalarProperty Name="TableCode" ColumnName="TableCode" />
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="UserLastModified" ColumnName="UserLastModified" />
+                <ScalarProperty Name="UserCreate" ColumnName="UserCreate" />
+                <ScalarProperty Name="Branch_ID" ColumnName="Branch_ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ScreensPermissions">
+            <EntityTypeMapping TypeName="POSModel.ScreensPermission">
+              <MappingFragment StoreEntitySet="ScreensPermissions">
+                <ScalarProperty Name="Caption" ColumnName="Caption" />
+                <ScalarProperty Name="Key" ColumnName="Key" />
+                <ScalarProperty Name="Branch_ID" ColumnName="Branch_ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="POSModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserCode" ColumnName="UserCode" />
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="UserLastModified" ColumnName="UserLastModified" />
+                <ScalarProperty Name="UserCreate" ColumnName="UserCreate" />
+                <ScalarProperty Name="Branch_ID" ColumnName="Branch_ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UsersPermissions">
+            <EntityTypeMapping TypeName="POSModel.UsersPermission">
+              <MappingFragment StoreEntitySet="UsersPermissions">
+                <ScalarProperty Name="ScreenID" ColumnName="ScreenID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Branch_ID" ColumnName="Branch_ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="AssignOrdersToCurrentShift" FunctionName="POSModel.Store.AssignOrdersToCurrentShift" />
+          <FunctionImportMapping FunctionImportName="POS_CustomerDeltails_save" FunctionName="POSModel.Store.POS_CustomerDeltails_save" />
+          <FunctionImportMapping FunctionImportName="POS_getAllItems" FunctionName="POSModel.Store.POS_getAllItems">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="POSModel.POS_getAllItems_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="main" ColumnName="main" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="POS_OrdersDeltails_save" FunctionName="POSModel.Store.POS_OrdersDeltails_save" />
+          <FunctionImportMapping FunctionImportName="POS_Pon" FunctionName="POSModel.Store.POS_Pon">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="POSModel.POS_Pon_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Master_ID" ColumnName="Master_ID" />
+                <ScalarProperty Name="UserCreate" ColumnName="UserCreate" />
+                <ScalarProperty Name="UserLastModified" ColumnName="UserLastModified" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+                <ScalarProperty Name="Item_ID" ColumnName="Item_ID" />
+                <ScalarProperty Name="Size_ID" ColumnName="Size_ID" />
+                <ScalarProperty Name="Perant_ID" ColumnName="Perant_ID" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Qty" ColumnName="Qty" />
+                <ScalarProperty Name="value" ColumnName="value" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="isDelete" ColumnName="isDelete" />
+                <ScalarProperty Name="isPrint" ColumnName="isPrint" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="Deleterow" ColumnName="Deleterow" />
+                <ScalarProperty Name="UserDelete" ColumnName="UserDelete" />
+                <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
+                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Category_ID" ColumnName="Category_ID" />
+                <ScalarProperty Name="Kitchen_ID" ColumnName="Kitchen_ID" />
+                <ScalarProperty Name="ItemService" ColumnName="ItemService" />
+                <ScalarProperty Name="ContainSizes" ColumnName="ContainSizes" />
+                <ScalarProperty Name="SizeCode" ColumnName="SizeCode" />
+                <ScalarProperty Name="SizeName" ColumnName="SizeName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="POS_ItemsSizes">
+            <EntityTypeMapping TypeName="POSModel.POS_ItemsSizes">
+              <MappingFragment StoreEntitySet="POS_ItemsSizes">
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Size_ID" ColumnName="Size_ID" />
+                <ScalarProperty Name="Item_ID" ColumnName="Item_ID" />
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="UserLastModified" ColumnName="UserLastModified" />
+                <ScalarProperty Name="UserCreate" ColumnName="UserCreate" />
+                <ScalarProperty Name="Branch_ID" ColumnName="Branch_ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LKUPCounties">
+            <EntityTypeMapping TypeName="POSModel.LKUPCounty">
+              <MappingFragment StoreEntitySet="LKUPCounties">
+                <ScalarProperty Name="CountyName" ColumnName="CountyName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LKUPMainTrees">
+            <EntityTypeMapping TypeName="POSModel.LKUPMainTree">
+              <MappingFragment StoreEntitySet="LKUPMainTree">
+                <ScalarProperty Name="IsUserControl" ColumnName="IsUserControl" />
+                <ScalarProperty Name="indexSort" ColumnName="indexSort" />
+                <ScalarProperty Name="Icon" ColumnName="Icon" />
+                <ScalarProperty Name="Function" ColumnName="Function" />
+                <ScalarProperty Name="FormName" ColumnName="FormName" />
+                <ScalarProperty Name="Perant_FormID" ColumnName="Perant_FormID" />
+                <ScalarProperty Name="CaptionAr" ColumnName="CaptionAr" />
+                <ScalarProperty Name="CaptionEn" ColumnName="CaptionEn" />
+                <ScalarProperty Name="FormID" ColumnName="FormID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="POS_Orders">
+            <EntityTypeMapping TypeName="POSModel.POS_Orders">
+              <MappingFragment StoreEntitySet="POS_Orders">
+                <ScalarProperty Name="TotalNet" ColumnName="TotalNet" />
+                <ScalarProperty Name="DeliveryFees" ColumnName="DeliveryFees" />
+                <ScalarProperty Name="Service" ColumnName="Service" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="Tax" ColumnName="Tax" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="CustomerAddress" ColumnName="CustomerAddress" />
+                <ScalarProperty Name="CustomerTel" ColumnName="CustomerTel" />
+                <ScalarProperty Name="Customer_ID" ColumnName="Customer_ID" />
+                <ScalarProperty Name="Timedo" ColumnName="Timedo" />
+                <ScalarProperty Name="OrderStatus" ColumnName="OrderStatus" />
+                <ScalarProperty Name="LookupOrderType_ID" ColumnName="LookupOrderType_ID" />
+                <ScalarProperty Name="OrderNo" ColumnName="OrderNo" />
+                <ScalarProperty Name="ShiftsTransaction_ID" ColumnName="ShiftsTransaction_ID" />
+                <ScalarProperty Name="LastModified" ColumnName="LastModified" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="UserLastModified" ColumnName="UserLastModified" />
+                <ScalarProperty Name="UserCreate" ColumnName="UserCreate" />
+                <ScalarProperty Name="Branch_ID" ColumnName="Branch_ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7e0255939bad41baaea4f59b58334c7a" Name="Diagram1" ShowGrid="true" >
+        <EntityTypeShape EntityType="POSModel.BackOfficeTree" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="POSModel.Branch" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="POSModel.Employee" Width="1.5" PointX="4.75" PointY="0.75" />
+        <EntityTypeShape EntityType="POSModel.GroupPermission" Width="1.5" PointX="4.75" PointY="4.75" />
+        <EntityTypeShape EntityType="POSModel.LKUPPhoneType" Width="1.5" PointX="6.75" PointY="0.75" />
+        <EntityTypeShape EntityType="POSModel.POS_Area" Width="1.5" PointX="0.75" PointY="6.75" />
+        <EntityTypeShape EntityType="POSModel.POS_Attributes" Width="1.5" PointX="6.75" PointY="3.75" />
+        <EntityTypeShape EntityType="POSModel.POS_Customers" Width="1.5" PointX="6.75" PointY="7.75" />
+        <EntityTypeShape EntityType="POSModel.POS_CustomersAddress" Width="1.5" PointX="8.75" PointY="0.75" />
+        <EntityTypeShape EntityType="POSModel.POS_CustomerServicePrice" Width="1.5" PointX="2.75" PointY="8.75" />
+        <EntityTypeShape EntityType="POSModel.POS_CustomersTel" Width="1.5" PointX="8.75" PointY="5.75" />
+        <EntityTypeShape EntityType="POSModel.POS_Expenses" Width="1.5" PointX="8.75" PointY="9.75" />
+        <EntityTypeShape EntityType="POSModel.POS_ExpensesTypes" Width="1.5" PointX="10.75" PointY="0.75" />
+        <EntityTypeShape EntityType="POSModel.POS_Floors" Width="1.5" PointX="10.75" PointY="4.75" />
+        <EntityTypeShape EntityType="POSModel.POS_Items" Width="1.5" PointX="10.75" PointY="8.75" />
+        <EntityTypeShape EntityType="POSModel.POS_ItemsCategories" Width="1.5" PointX="4.75" PointY="11.75" />
+        <EntityTypeShape EntityType="POSModel.POS_Kitchens" Width="1.5" PointX="0.75" PointY="12.75" />
+        <EntityTypeShape EntityType="POSModel.POS_LKUPOrderType" Width="1.5" PointX="12.75" PointY="4.75" />
+        <EntityTypeShape EntityType="POSModel.POS_Orders2" Width="1.5" PointX="10.75" PointY="13.75" />
+        <EntityTypeShape EntityType="POSModel.POS_ShiftsTransaction" Width="1.5" PointX="12.75" PointY="13.75" />
+        <EntityTypeShape EntityType="POSModel.POS_ShiftsTransaction2" Width="1.5" PointX="14.75" PointY="0.75" />
+        <EntityTypeShape EntityType="POSModel.POS_ShifTypes" Width="1.5" PointX="14.75" PointY="5.75" />
+        <EntityTypeShape EntityType="POSModel.POS_Sizes" Width="1.5" PointX="6.75" PointY="14.75" />
+        <EntityTypeShape EntityType="POSModel.POS_Tables" Width="1.5" PointX="14.75" PointY="9.75" />
+        <EntityTypeShape EntityType="POSModel.ScreensPermission" Width="1.5" PointX="14.75" PointY="13.75" />
+        <EntityTypeShape EntityType="POSModel.User" Width="1.5" PointX="2.75" PointY="15.75" />
+        <EntityTypeShape EntityType="POSModel.UsersPermission" Width="1.5" PointX="16.75" PointY="0.75" />
+        <EntityTypeShape EntityType="POSModel.POS_ItemsSizes" Width="1.5" PointX="15.375" PointY="16.75" />
+        <EntityTypeShape EntityType="POSModel.LKUPCounty" Width="1.5" PointX="17.375" PointY="3.75" />
+        <EntityTypeShape EntityType="POSModel.LKUPMainTree" Width="1.5" PointX="17.375" PointY="6.75" />
+        <EntityTypeShape EntityType="POSModel.POS_Orders" Width="1.5" PointX="17.375" PointY="10.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
